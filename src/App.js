@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import './styles/App.css';
-import PostItem from "./components/PostItem";
+import PostList from "./components/PostList";
+import MyButton from "./components/UI/button/MyButton";
+import MyInput from "./components/UI/input/MyInput";
 
 function App() {
     const [posts, setPosts] = useState([
@@ -9,22 +11,28 @@ function App() {
         {id: 3, title: 'Javascript 3', body: 'Description'},
     ])
 
+    const [title, setTitle] = useState('asdasdfgdf')
+
+    const addNewPost = () => {
+
+    }
+
   return (
     <div className="App">
-        <h1 style={{textAlign: 'center'}}>
-            Список постов
-        </h1>
-        {posts.map((post) =>
-            <PostItem post={post} ket={post.id}/>
-        )}
+        <form>
+
+            <MyInput
+                value={title}
+                onChange={e => setTitle(e.target.value)}
+                type="text"
+                placeholder="Название поста"
+            />
+            <MyInput type="text" placeholder="Описание поста"/>
+            <MyButton onClick={addNewPost}>Создать пост</MyButton>
+        </form>
+      <PostList posts={posts} title="Посты про JS"/>
     </div>
   );
 }
 
 export default App;
-
-
-
-
-
-
