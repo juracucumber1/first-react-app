@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import './styles/App.css';
 import PostList from "./components/PostList";
 import MyButton from "./components/UI/button/MyButton";
@@ -11,10 +11,19 @@ function App() {
         {id: 3, title: 'Javascript 3', body: 'Description'},
     ])
 
-    const [title, setTitle] = useState('asdasdfgdf')
+    const [title, setTitle] = useState('')
+    const [body, setBody] = useState('')
 
-    const addNewPost = () => {
-
+    const addNewPost = (e) => {
+        e.preventDefault()
+        const newPost = {
+            id: Date.now(),
+            title,
+            body
+        }
+        setPosts([...posts, newPost])
+        setTitle('')
+        setBody('')
     }
 
   return (
@@ -27,7 +36,12 @@ function App() {
                 type="text"
                 placeholder="Название поста"
             />
-            <MyInput type="text" placeholder="Описание поста"/>
+            <MyInput
+                value={body}
+                onChange={e => setBody(e.target.value)}
+                type="text"
+                placeholder="Описание поста"
+            />
             <MyButton onClick={addNewPost}>Создать пост</MyButton>
         </form>
       <PostList posts={posts} title="Посты про JS"/>
@@ -36,3 +50,7 @@ function App() {
 }
 
 export default App;
+
+// Тайминг 50:00
+// Тайминг 55:00
+
