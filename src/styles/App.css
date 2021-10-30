@@ -23,8 +23,9 @@
     align-items: center;
 }
 
-
-
+.post__btns {
+    display: flex;
+}
 
 .post-enter {
     transform: translateX(-150px);
@@ -52,7 +53,7 @@
     cursor: pointer;
 }
 .page__current {
-    border: 2px solid darkblue;
+    border: 2px solid red;
     font-weight: bold;
 }
 
